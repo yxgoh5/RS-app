@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">RS Bank</string>
+
+    <string-array name="Items">
+        <item>Arduino Uno V3</item>
+        <item>Raspberry Pi</item>
+        <item>Buttons</item>
+        <item>LED</item>
+        <item>USB cable</item>
+        <item>NodeMcu Esp8266</item>
+        <item>Whatever</item>
+    </string-array>
+</resources>
