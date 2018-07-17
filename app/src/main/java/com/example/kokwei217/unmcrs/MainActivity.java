@@ -1,6 +1,11 @@
 package com.example.kokwei217.unmcrs;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -16,15 +21,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+     DrawerLayout drawer;
+     Toolbar toolbar;
+     NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Home");
 
-        Toolbar toolbar = findViewById(R.id.toolbar_main);
+        toolbar = findViewById(R.id.toolbar_main);
+        drawer = findViewById(R.id.drawer_main);
+        navigationView = findViewById(R.id.nv_main);
         setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
 
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                selectDrawerItem(item);
+                return true;
+            }
+        });
+
+
+//-----------------------------ListView----------------------------------------------------------------------------
         final List<String> itemList = new ArrayList<>();
         itemList.add("Raspberry Pi");
         itemList.add("Arduino Uno");
@@ -55,6 +79,28 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+    public void selectDrawerItem(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.nav_first:
+                Toast.makeText(MainActivity.this, "first", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_second:
+                Toast.makeText(MainActivity.this, "second", Toast.LENGTH_SHORT).show();
+                 break;
+            case R.id.sub_first:
+                Toast.makeText(MainActivity.this, "Made by ", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                break;
+        }
+        item.setChecked(true);
+        setTitle(item.getTitle());
+        drawer.closeDrawers();
+    }
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -64,6 +110,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case android.R.id.home:
+                drawer.openDrawer(GravityCompat.START);
+                return true;
+
             case R.id.menu_add:
                 Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
                 return true;
