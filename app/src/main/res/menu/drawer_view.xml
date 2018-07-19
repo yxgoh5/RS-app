@@ -4,22 +4,28 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_first"
+            android:icon="@drawable/ic_home_black_24dp"
             android:title="Home" />
 
         <item
             android:id="@+id/nav_second"
-            android:title="second"/>
+            android:title="second" />
     </group>
 
-    <item android:title="Sub items">
-        <menu>
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/sub_first"
-                    android:icon="@drawable/ic_info_black_24dp"
-                    android:title="About"/>
-            </group>
-        </menu>
-    </item>
+
+    <group
+        android:id="@+id/nav_divider"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_info_black_24dp"
+            android:title="About" />
+        <item
+            android:id="@+id/nav_contact"
+            android:icon="@drawable/ic_question_contact_black_24dp"
+            android:title="Contact Us" />
+    </group>
+
+
 </menu>
 

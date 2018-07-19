@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kokwei217.unmcrs">
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +15,7 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -26,6 +26,9 @@
         <activity
             android:name=".ItemImageActivity"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".CartActivity"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>

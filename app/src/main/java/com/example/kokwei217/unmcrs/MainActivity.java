@@ -1,20 +1,26 @@
 package com.example.kokwei217.unmcrs;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -88,8 +94,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.nav_second:
                 Toast.makeText(MainActivity.this, "second", Toast.LENGTH_SHORT).show();
                  break;
-            case R.id.sub_first:
+            case R.id.nav_about:
                 Toast.makeText(MainActivity.this, "Made by ", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_contact:
                 break;
             default:
                 break;
@@ -114,14 +122,48 @@ public class MainActivity extends AppCompatActivity {
                 drawer.openDrawer(GravityCompat.START);
                 return true;
 
-            case R.id.menu_add:
-                Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
+            case R.id.menu_cart:
+                Intent cartIntent = new Intent(this, CartActivity.class);
+                startActivity(cartIntent);
                 return true;
             case R.id.menu_search:
-                Toast.makeText(MainActivity.this, "searching", Toast.LENGTH_SHORT).show();
+                setSearchMessage();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void setSearchMessage(){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setTitle("Search");
+        alertDialog.setMessage("Enter component's name here:");
+        final EditText edittext = new EditText(this);
+
+        alertDialog.setView(edittext);
+
+        alertDialog.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        alertDialog.setPositiveButton("search", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(MainActivity.this,"Searching for components", Toast.LENGTH_SHORT).show();
+            }
+        });
+//        LinearLayout layout = new LinearLayout(this);
+//        layout.setOrientation(LinearLayout.VERTICAL);
+//
+//        Spinner spinner = new Spinner(this);
+//        layout.addView(spinner);
+
+//        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this, R.array.Items, android.R.layout.simple_list_item_1);
+//        spinner.setAdapter(arrayAdapter);
+
+//        alertDialog.setView(layout);
+        alertDialog.show();
     }
 }
