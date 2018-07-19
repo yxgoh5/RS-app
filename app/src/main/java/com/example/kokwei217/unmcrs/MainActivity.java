@@ -89,15 +89,16 @@ public class MainActivity extends AppCompatActivity {
     public void selectDrawerItem(MenuItem item){
         switch (item.getItemId()){
             case R.id.nav_first:
-                Toast.makeText(MainActivity.this, "first", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_second:
-                Toast.makeText(MainActivity.this, "second", Toast.LENGTH_SHORT).show();
+                Intent cartIntent = new Intent(MainActivity.this, CartActivity.class);
+                startActivity(cartIntent);
                  break;
             case R.id.nav_about:
-                Toast.makeText(MainActivity.this, "Made by ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Made by Kok Wei and Dick Son ", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_contact:
+                Toast.makeText(this, "Search for UNMNC RS on facebook lul", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
@@ -106,8 +107,6 @@ public class MainActivity extends AppCompatActivity {
         setTitle(item.getTitle());
         drawer.closeDrawers();
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -122,9 +121,8 @@ public class MainActivity extends AppCompatActivity {
                 drawer.openDrawer(GravityCompat.START);
                 return true;
 
-            case R.id.menu_cart:
-                Intent cartIntent = new Intent(this, CartActivity.class);
-                startActivity(cartIntent);
+            case R.id.menu_setting:
+                Toast.makeText(this, "placeholder for now", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.menu_search:
                 setSearchMessage();

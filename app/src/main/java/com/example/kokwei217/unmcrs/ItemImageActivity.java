@@ -2,10 +2,13 @@ package com.example.kokwei217.unmcrs;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,13 +30,14 @@ public class ItemImageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_image);
-        Toolbar toolbar = findViewById(R.id.toolbar_main);
+        Toolbar toolbar = findViewById(R.id.tb_ignore);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         final String itemName = getIntent().getStringExtra(itemNameKey);
         int itemImg = getIntent().getIntExtra(itemImgKey, 0);
+        setTitle(itemName);
         TextView itemNameTV = findViewById(R.id.item_name);
         TextView availableQuantity = findViewById(R.id.available_quantity);
         ImageView itemImage = findViewById(R.id.item_img);
@@ -73,6 +77,25 @@ public class ItemImageActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_item_image, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_cart:
+                Intent intent = new Intent(this, CartActivity.class);
+                startActivity(intent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 //    public static ArrayList<CartComponent> getComponents() {

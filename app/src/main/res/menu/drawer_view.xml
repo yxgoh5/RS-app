@@ -8,8 +8,9 @@
             android:title="Home" />
 
         <item
+            android:icon="@drawable/ic_shopping_cart_black_24dp"
             android:id="@+id/nav_second"
-            android:title="second" />
+            android:title="Cart" />
     </group>
 
 

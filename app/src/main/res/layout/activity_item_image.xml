@@ -6,11 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ItemImageActivity">
 
-    <include
+    <android.support.v7.widget.Toolbar
         android:id="@+id/tb_ignore"
-        layout="@layout/toolbar_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:titleTextColor="@android:color/white">
+    </android.support.v7.widget.Toolbar>
 
     <ImageView
         android:id="@+id/item_img"
