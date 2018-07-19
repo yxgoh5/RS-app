@@ -21,8 +21,7 @@ public class ItemImageActivity extends AppCompatActivity {
     private static final int QUANTITY = 10;
     public static ArrayList<CartComponent> components;
     public static int requestAmount = 0;
-    public static String itemName;
-    public static boolean requestState = false;
+//    public static String itemName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +32,7 @@ public class ItemImageActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        itemName = getIntent().getStringExtra(itemNameKey);
+        final String itemName = getIntent().getStringExtra(itemNameKey);
         int itemImg = getIntent().getIntExtra(itemImgKey, 0);
         TextView itemNameTV = findViewById(R.id.item_name);
         TextView availableQuantity = findViewById(R.id.available_quantity);
@@ -76,9 +75,9 @@ public class ItemImageActivity extends AppCompatActivity {
         });
     }
 
-    public static ArrayList<CartComponent> getComponents() {
-        ArrayList<CartComponent> components = new ArrayList<CartComponent>();
-        components.add(new CartComponent(itemName, requestAmount));
-        return components;
-    }
+//    public static ArrayList<CartComponent> getComponents() {
+//        ArrayList<CartComponent> components = new ArrayList<CartComponent>();
+//        components.add(new CartComponent(itemName, requestAmount));
+//        return components;
+//    }
 }
