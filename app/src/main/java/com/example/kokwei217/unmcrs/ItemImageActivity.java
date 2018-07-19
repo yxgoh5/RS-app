@@ -57,7 +57,7 @@ public class ItemImageActivity extends AppCompatActivity {
                 } else if (requestAmount > QUANTITY) {
                     Toast.makeText(ItemImageActivity.this, "Dont Request so much cb", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(ItemImageActivity.this, "request successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ItemImageActivity.this, "Added to cart", Toast.LENGTH_SHORT).show();
                     components = new ArrayList<CartComponent>();
                     components.add(new CartComponent(itemName, requestAmount));
                     SharedPreferences sharedPreferences = getSharedPreferences("Data",MODE_PRIVATE);
